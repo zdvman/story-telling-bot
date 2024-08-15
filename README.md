@@ -41,8 +41,8 @@ To get started with this project locally, follow the steps below.
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/yourusername/storytelling-bot.git
-   cd storytelling-bot
+   git clone https://github.com/zdvman/story-telling-bot.git
+   cd story-telling-bot
    ```
 
 2. **Install Dependencies**:
