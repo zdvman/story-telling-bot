@@ -1,5 +1,7 @@
 # Storytelling Bot
 
+![image](https://github.com/user-attachments/assets/e7185d32-53d8-4715-b54a-db82fe12e895)
+
 ## Project Overview
 
 The **Storytelling Bot** is a web-based application that generates AI-powered stories based on user prompts. Inspired by the style of ChatGPT, this bot utilizes the Claude API from Anthropic to generate creative responses in a conversational format. This project is a demonstration of integrating a modern AI API with a responsive frontend built using TypeScript, Webpack, and CSS.
