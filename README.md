@@ -81,6 +81,7 @@ The server will run on `http://localhost:3000`.
 In a separate terminal window, start the Webpack Dev Server to serve the frontend:
 
 ```bash
+npx webpack --config webpack.config.js
 npx webpack serve --open
 ```
 
