@@ -1,20 +1,184 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Storytelling Bot</title>
-    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div id="chatContainer">
-      <h1>Storytelling Bot</h1>
-      <input type="text" id="prompt" placeholder="Enter your story prompt..." />
-      <button id="tellStory">Tell me a story!</button>
-      <p id="storyOutput"></p>
+      <h1>Poetry Association</h1>
+      <div id="nameSection">
+        <input type="text" id="userName" placeholder="Enter your full name" />
+        <button id="saveBtn">Save my name</button>
+      </div>
+      <div id="poetrySection" style="display: none">
+        <h2 id="greeting"></h2>
+        <div class="poetry-form-row">
+          <label for="poetryForm">Choose a poetry form:</label>
+          <select id="poetryForm">
+            <option value="sonnet">Sonnet</option>
+            <option value="haiku">Haiku</option>
+            <option value="limerick">Limerick</option>
+            <option value="freeVerse">Free verse</option>
+            <option value="ballad">Ballad</option>
+            <option value="ode">Ode</option>
+            <option value="epicPoem">Epic poem</option>
+            <option value="acrostic">Acrostic</option>
+            <option value="rubai">Ruba'i</option>
+            <option value="tanka">Tanka</option>
+            <option value="ghazal">Ghazal</option>
+            <option value="villanelle">Villanelle</option>
+            <option value="pantoum">Pantoum</option>
+            <option value="terzaRima">Terza rima</option>
+            <option value="blankVerse">Blank verse</option>
+            <option value="concretePoetry">Concrete poetry</option>
+            <option value="elegy">Elegy</option>
+            <option value="rondeau">Rondeau</option>
+            <option value="triolet">Triolet</option>
+            <option value="cinquain">Cinquain</option>
+          </select>
+          <span class="tooltip"
+            >?
+            <div class="tooltiptext">
+              Here's a list of poetry styles that are both popular and
+              convenient for AI to generate:
+              <br /><br />
+              <strong>1. Sonnet</strong><br />
+              A 14-line poem, typically written in iambic pentameter, often with
+              a specific rhyme scheme such as ABABCDCDEFEFGG.<br />
+              Convenience for AI: The structured form guides AI in crafting
+              intricate and formal poetry.<br /><br />
+
+              <strong>2. Haiku</strong><br />
+              A three-line poem with a 5-7-5 syllable structure, traditionally
+              focused on nature and the changing seasons.<br />
+              Convenience for AI: The strict syllable count allows AI to
+              generate concise and meaningful content.<br /><br />
+
+              <strong>3. Limerick</strong><br />
+              A humorous five-line poem with an AABBA rhyme scheme, often with a
+              playful or witty theme.<br />
+              Convenience for AI: The fixed rhyme and meter make it easy for AI
+              to produce rhythmic and entertaining verses.<br /><br />
+
+              <strong>4. Free verse</strong><br />
+              Poetry that does not follow regular meter or rhyme schemes,
+              allowing for a free-flowing expression of ideas.<br />
+              Convenience for AI: The flexibility enables AI to focus on
+              imagery, themes, and emotions without structural constraints.<br /><br />
+
+              <strong>5. Ballad</strong><br />
+              A narrative poem that tells a story, typically with a simple rhyme
+              scheme (ABAB or ABCB) and a musical quality.<br />
+              Convenience for AI: The narrative structure combined with regular
+              rhyme and meter makes it accessible for AI to generate.<br /><br />
+
+              <strong>6. Ode</strong><br />
+              A formal, often ceremonious lyric poem that addresses and often
+              celebrates a person, place, thing, or idea.<br />
+              Convenience for AI: The structured form allows AI to craft
+              elevated and expressive poetry.<br /><br />
+
+              <strong>7. Epic poem</strong><br />
+              A lengthy narrative poem, often detailing heroic deeds and events
+              of historical or cultural significance.<br />
+              Convenience for AI: The narrative nature allows AI to elaborate on
+              stories and characters in poetic form.<br /><br />
+
+              <strong>8. Acrostic</strong><br />
+              A poem where the first letter of each line spells out a word or
+              message, usually vertically aligned.<br />
+              Convenience for AI: The clear structure allows for creative
+              wordplay within AI's constraints.<br /><br />
+
+              <strong>9. Ruba'i</strong><br />
+              A Persian quatrain with a rhyme scheme of AABA.<br />
+              Convenience for AI: The simple quatrain form and rhyme scheme make
+              it straightforward for AI to generate.<br /><br />
+
+              <strong>10. Tanka</strong><br />
+              A five-line Japanese poem with a 5-7-5-7-7 syllable pattern, often
+              exploring nature, seasons, and emotions.<br />
+              Convenience for AI: The defined syllable structure guides AI in
+              creating evocative and compact poetry.<br /><br />
+
+              <strong>11. Ghazal</strong><br />
+              A series of couplets, each of which is a self-contained poem, with
+              a repeated rhyme pattern.<br />
+              Convenience for AI: The repetition and couplet structure assist AI
+              in generating cohesive and lyrical verses.<br /><br />
+
+              <strong>12. Villanelle</strong><br />
+              A 19-line poem with two repeating rhymes and two refrains,
+              creating a circular, musical effect.<br />
+              Convenience for AI: The repetition helps AI create rhythm and
+              cohesion in the poem.<br /><br />
+
+              <strong>13. Pantoum</strong><br />
+              A poem with a series of quatrains where the second and fourth
+              lines of each stanza are repeated as the first and third lines of
+              the next.<br />
+              Convenience for AI: The repeating structure assists AI in
+              maintaining the poem’s continuity and flow.<br /><br />
+
+              <strong>14. Terza rima</strong><br />
+              A poem composed of tercets with an interlocking rhyme scheme (ABA
+              BCB CDC, etc.).<br />
+              Convenience for AI: The interlocking rhyme scheme provides a clear
+              structural guide for AI.<br /><br />
+
+              <strong>15. Blank verse</strong><br />
+              Unrhymed iambic pentameter, commonly used in English dramatic,
+              epic, and reflective poetry.<br />
+              Convenience for AI: The regular meter provides a framework for AI
+              while allowing flexibility in expression.<br /><br />
+
+              <strong>16. Concrete poetry</strong><br />
+              A form of poetry where the visual arrangement of text is as
+              important as the words themselves, often creating a shape or
+              image.<br />
+              Convenience for AI: The visual aspect challenges AI to blend form
+              with meaning.<br /><br />
+
+              <strong>17. Elegy</strong><br />
+              A reflective poem that laments the loss of someone or something,
+              often in a solemn or meditative tone.<br />
+              Convenience for AI: The thematic focus on loss provides a clear
+              emotional direction for AI.<br /><br />
+
+              <strong>18. Rondeau</strong><br />
+              A lyrical poem of 13 lines, typically with two rhymes and a
+              refrain.<br />
+              Convenience for AI: The refrains and rhymes provide structure,
+              guiding AI in creating rhythmic poetry.<br /><br />
+
+              <strong>19. Triolet</strong><br />
+              An eight-line poem with a tight rhyme scheme (ABaAabAB), where the
+              first line is repeated as the fourth and seventh, and the second
+              line as the eighth.<br />
+              Convenience for AI: The repetitive structure aids AI in
+              maintaining rhythm and cohesion.<br /><br />
+
+              <strong>20. Cinquain</strong><br />
+              A five-line poem with a specific syllable count or word pattern
+              per line.<br />
+              Convenience for AI: The pattern is simple yet structured, making
+              it accessible for AI to generate.
+            </div>
+          </span>
+        </div>
+        <div class="poetry-form-container">
+          <input
+            type="text"
+            id="prompt"
+            placeholder="Enter your story prompt..."
+          />
+          <button id="tellStory">Tell me a story!</button>
+          <p id="storyOutput"></p>
+          <button id="finishBtn">Finish poetry session</button>
+        </div>
+      </div>
     </div>
-    <script src="dist/bundle.js"></script>
   </body>
 </html>

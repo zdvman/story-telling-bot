@@ -1,16 +1,25 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const webpack = require("webpack");
-require("dotenv").config();
+import path from "path";
+import { fileURLToPath } from "url";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import webpack from "webpack";
+import dotenv from "dotenv";
 
-module.exports = {
+// Определяем __dirname для ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Загружаем правильный .env файл в зависимости от режима
+const envFile =
+  process.env.MODE === "production" ? ".env.production" : ".env.development";
+dotenv.config({ path: envFile });
+
+export default {
   mode: process.env.MODE || "development",
-  entry: "./src/index.ts",
+  entry: "./src/index.js",
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        use: "ts-loader",
+        test: /\.js$/,
         exclude: /node_modules/,
       },
       {
@@ -20,7 +29,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: [".js"],
   },
   output: {
     filename: "bundle.js",
@@ -29,13 +38,12 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/index.html", // Source HTML file
-      filename: "index.html", // Output file in dist
+      template: "./src/index.html",
+      filename: "index.html",
     }),
     new webpack.DefinePlugin({
-      "process.env.ANTHROPIC_API_KEY": JSON.stringify(
-        process.env.ANTHROPIC_API_KEY
-      ),
+      "process.env.API_URL": JSON.stringify(process.env.API_URL),
+      "process.env.MONGO_URI": JSON.stringify(process.env.MONGO_URI),
     }),
   ],
   devServer: {

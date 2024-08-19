@@ -1,0 +1,52 @@
+<!-- poems.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poems by <%= userName %></title>
+    <link rel="stylesheet" href="/style-poems.css" />
+  </head>
+  <body>
+    <h1>Poems by <%= userName %></h1>
+    <div>
+      <% poems.forEach(function(poem) { %>
+      <div class="poem-container">
+        <h2>Style: <%= poem.styleOfPoem %></h2>
+        <p>
+          <strong>Prompt: "<%= poem.prompt %>"</strong>
+        </p>
+        <p><%- poem.poem.replace(/\n/g, '<br />') %></p>
+
+        <!-- Добавляем кнопки для соцсетей -->
+        <div class="share-buttons">
+          <!-- <a
+            href="https://www.facebook.com/sharer/sharer.php?u=<%= encodeURIComponent(apiUrl + '/poems/' + poem._id) %>"
+            target="_blank"
+            class="share-facebook"
+            >Share on Facebook</a
+          > -->
+          <a
+            href="https://twitter.com/intent/tweet?url=<%= encodeURIComponent(apiUrl + '/poems/' + poem._id) %>"
+            target="_blank"
+            class="share-twitter"
+            >Share on Twitter</a
+          >
+          <a
+            href="https://www.linkedin.com/sharing/share-offsite/?url=<%= encodeURIComponent(apiUrl + '/poems/' + poem._id) %>"
+            target="_blank"
+            class="share-linkedin"
+            >Share on LinkedIn</a
+          >
+          <a
+            href="mailto:?subject=Check out this poem&body=<%= encodeURIComponent('Check out this poem: ' + apiUrl + '/poems/' + poem._id) %>"
+            target="_blank"
+            class="share-email"
+            >Share via Email</a
+          >
+        </div>
+      </div>
+      <% }); %>
+    </div>
+  </body>
+</html>

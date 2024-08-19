@@ -1,4 +1,10 @@
 /* General Styles */
+html,
+body {
+  height: auto; /* Убираем фиксированную высоту */
+  overflow-x: hidden; /* Предотвращаем горизонтальную прокрутку */
+}
+
 body {
   font-family: "Arial", sans-serif;
   background-color: #f5f5f5;
@@ -8,14 +14,14 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh; /* Изменено с height на min-height */
 }
 
 h1 {
   font-size: 2rem;
   color: #333;
   margin-bottom: 1rem;
-  text-align: center; /* Center align the text */
+  text-align: center;
 }
 
 /* Chat Container */
@@ -29,8 +35,42 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  max-height: none; /* Убедитесь, что высота не ограничена */
 }
 
+/* Form Sections */
+#nameSection,
+#poetrySection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: auto; /* Убедитесь, что высота динамическая */
+}
+
+/* Изначально скрытая секция */
+#poetrySection.hide {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: none;
+}
+
+#poetrySection.show {
+  opacity: 1;
+  display: block; /* Показываем секцию */
+}
+
+#nameSection.hide {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: none;
+}
+
+#nameSection.show {
+  opacity: 1;
+  display: block; /* Показываем секцию */
+}
+
+#userName,
 #prompt {
   width: 100%;
   padding: 12px;
@@ -40,7 +80,11 @@ h1 {
   box-sizing: border-box;
 }
 
-#tellStory {
+/* Buttons */
+#saveBtn,
+#tellStory,
+#finishBtn {
+  width: 100%; /* Ensure the buttons are 100% width */
   padding: 12px;
   background-color: #007bff;
   color: white;
@@ -49,13 +93,16 @@ h1 {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 10px; /* Add margin to create space between input and button */
+  margin-top: 10px;
 }
 
-#tellStory:hover {
+#saveBtn:hover,
+#tellStory:hover,
+#finishBtn:hover {
   background-color: #0056b3;
 }
 
+/* Output Area */
 #storyOutput {
   background-color: #f0f0f0;
   padding: 15px;
@@ -65,20 +112,82 @@ h1 {
   white-space: pre-wrap;
   word-wrap: break-word;
   color: #333;
+  overflow-y: auto; /* Добавлено, чтобы обеспечить прокрутку длинного содержимого */
+}
+
+/* Tooltip */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  color: #3498db;
+  margin-left: 10px; /* Adds space between the tooltip and the select box */
+}
+
+.tooltiptext {
+  visibility: hidden;
+  width: 300px; /* Или установите меньшую ширину, если нужно */
+  background-color: #f9f9f9;
+  color: #333;
+  text-align: left;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: italic;
+}
+
+.tooltiptext.show {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(10px); /* Смещение вниз для лучшей видимости */
+}
+
+/* Row container for label, select, and tooltip */
+.poetry-form-row {
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Poetry Form Container */
+.poetry-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px; /* Adds space below the form container */
+}
+
+#poetryForm {
+  font-size: 1rem;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
 }
 
 /* Responsive Design */
 @media (max-width: 600px) {
   #chatContainer {
     width: 100%;
-    padding: 20px; /* Add padding for mobile devices */
+    padding: 20px;
   }
 
   h1 {
     font-size: 1.5rem;
   }
 
-  #tellStory {
+  #tellStory,
+  #finishBtn {
     font-size: 0.9rem;
   }
 
