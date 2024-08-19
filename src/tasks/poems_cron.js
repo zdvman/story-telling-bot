@@ -23,10 +23,9 @@ async function deleteExpiredPoemsCollections() {
 
 // Cron job that will run the deleteExpiredPoemsCollections function on a schedule
 const poemsCollectionDeleteCronJob = cron.schedule(
-  "*/1 * * * *", // Run every minute
+  "0 0 * * *", // Run every day at midnight
   deleteExpiredPoemsCollections,
   {
-    // Run every minute
     scheduled: false, // This prevents automatic execution on import
   }
 );
