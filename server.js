@@ -20,7 +20,14 @@ dotenv.config({ path: `.env.${process.env.NODE_ENV}` }); // Загружаем �
 
 const app = express(); // Инициализируем приложение Express
 
-app.use(cors()); // Включаем CORS для всех маршрутов
+app.use(
+  cors({
+    origin: ["http://stbot.dmytrozuiev.com", "http://localhost:3000"], // Для локальной разработки и продакшена
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
 app.use(express.json()); // Включаем JSON-парсинг для входящих запросов
 
 // Serve static files from the 'dist' directory
