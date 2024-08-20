@@ -22,7 +22,11 @@ const app = express(); // Инициализируем приложение Expr
 
 app.use(
   cors({
-    origin: ["http://stbot.dmytrozuiev.com", "http://localhost:3000"], // Для локальной разработки и продакшена
+    origin: [
+      "http://13.43.38.254",
+      "http://stbot.dmytrozuiev.com",
+      "http://localhost:3000",
+    ], // Для локальной разработки и продакшена
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   })
