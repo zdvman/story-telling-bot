@@ -126,7 +126,7 @@ app.post("/api/save-poems", async (req, res) => {
 });
 
 // Маршрут для отображения поэм пользователя
-app.get("/poems/:id", async (req, res) => {
+app.get("/api/poems/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -147,7 +147,7 @@ app.get("/poems/:id", async (req, res) => {
 });
 
 // Маршрут для генерации QR-кода
-app.get("/generate-qr/:id", async (req, res) => {
+app.get("/api/generate-qr/:id", async (req, res) => {
   const { id } = req.params;
   const url = `${process.env.API_URL}/poems/${id}`;
 
@@ -160,7 +160,7 @@ app.get("/generate-qr/:id", async (req, res) => {
   }
 });
 
-app.use("/healthcheck", (req, res) => {
+app.use("/api/healthcheck", (req, res) => {
   res.status(200).send("Server is running");
 });
 

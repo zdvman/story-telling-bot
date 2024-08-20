@@ -177,10 +177,12 @@ finishBtn?.addEventListener("click", async () => {
       console.log("Poems saved successfully:", result);
 
       // Генерация URL для страницы с поэмами
-      const poemsPageUrl = `${apiUrl}/poems/${result._id}`;
+      const poemsPageUrl = `${apiUrl}/api/poems/${result._id}`;
 
       // Запрос на генерацию QR-кода
-      const qrCodeResponse = await fetch(`${apiUrl}/generate-qr/${result._id}`);
+      const qrCodeResponse = await fetch(
+        `${apiUrl}/api/generate-qr/${result._id}`
+      );
       const qrCodeData = await qrCodeResponse.json();
 
       if (qrCodeData.qrCode) {
